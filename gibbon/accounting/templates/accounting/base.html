@@ -1,20 +1,24 @@
-{% load django_bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
+{% load static django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Gibbon{% endblock %}</title>
+
+  {% bootstrap_css %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
-  {% include "accounting/includes/navbar.html" %} 
+  {% include "accounting/includes/navbar.html" %}
 
   <div class="content">
     {% block content %}{% endblock %}
   </div>
 
+  {% bootstrap_javascript %}
 </body>
 </html>
