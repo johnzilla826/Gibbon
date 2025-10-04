@@ -1,1 +1,1 @@
-Puffin: Self-hosted Accounting Software
+Puffin: Self-hosted Double-Entry Accounting Software
