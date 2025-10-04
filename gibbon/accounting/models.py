@@ -7,7 +7,7 @@ class Company(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.location}"
+        return f"{self.name}"
 
 class Account(models.Model):
     number = models.IntegerField(unique=True)

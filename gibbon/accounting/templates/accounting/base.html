@@ -9,6 +9,9 @@
   <title>{% block title %}Gibbon{% endblock %}</title>
 </head>
 <body>
+
+  {% include "accounting/includes/navbar.html" %} 
+
   <div class="content">
     {% block content %}{% endblock %}
   </div>
