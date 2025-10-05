@@ -1,5 +1,5 @@
 [project]
-name = "gibbon"
+name = "OpenView"
 version = "0.1.0"
 description = "Self-hosted Double-Entry Accounting Software"
 authors = [
