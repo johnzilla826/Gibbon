@@ -1,0 +1,67 @@
+{% extends "accounting/base.html" %}
+
+{% block title %}Account - OpenView{% endblock %}
+
+{% block content %}
+
+<h5>Account Information</h5>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+  {% endif %}
+
+	<!-- HTML -->
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.number.id_for_label }}">Number</label>
+    {{ form.number }}
+    {% if form.number.errors %}
+      <div class="invalid-feedback d-block">{{ form.number.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.name.id_for_label }}">Name</label>
+    {{ form.name }}
+    {% if form.name.errors %}
+      <div class="invalid-feedback d-block">{{ form.name.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.description.id_for_label }}">Description</label>
+    {{ form.description }}
+    {% if form.description.errors %}
+      <div class="invalid-feedback d-block">{{ form.description.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.company.id_for_label }}">Company</label>
+    {{ form.company }}
+    {% if form.company.errors %}
+      <div class="invalid-feedback d-block">{{ form.company.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.classification.id_for_label }}">Classification</label>
+    {{ form.classification }}
+    {% if form.classification.errors %}
+      <div class="invalid-feedback d-block">{{ form.classification.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="{{ form.parent.id_for_label }}">Parent</label>
+    {{ form.parent }}
+    {% if form.parent.errors %}
+      <div class="invalid-feedback d-block">{{ form.parent.errors|join:", " }}</div>
+    {% endif %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}
