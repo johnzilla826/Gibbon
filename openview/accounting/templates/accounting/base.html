@@ -29,6 +29,17 @@
 		});
 		</script>
 		{% include "accounting/includes/navbar.html" %}
+		
+		<!-- Message bar -->
+		{% if messages %}
+  			<div class="container mt-3">
+    			{% for message in messages %}
+      				<div class="alert alert-{{ message.tags }}">
+        				{{ message }}
+      				</div>
+    			{% endfor %}
+  			</div>
+		{% endif %}
 
 		<div class="content container">{% block content %}{% endblock %}</div>
 
