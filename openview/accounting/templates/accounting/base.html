@@ -1,24 +1,51 @@
 {% load static django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}OpenView{% endblock %}</title>
+	<head>
+		<meta charset="UTF-8" />
+		<title>{% block title %}OpenView{% endblock %}</title>
 
-  {% bootstrap_css %}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+		{% bootstrap_css %}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	</head>
+	<body>
+		<!-- Highlights active link in navbar -->
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const current = new URL(window.location.href);
+				const currentPath = current.pathname.replace(/\/$/, "");
+				document
+					.querySelectorAll(
+						".navbar a.nav-link, .navbar .dropdown-item"
+					)
+					.forEach((a) => {
+						const hrefPath = new URL(
+							a.getAttribute("href"),
+							window.location.origin
+						).pathname.replace(/\/$/, "");
+						if (currentPath === hrefPath) {
+							a.classList.add("active");
+							a.setAttribute("aria-current", "page");
+							const parentToggle = a
+								.closest(".dropdown")
+								?.querySelector(".nav-link.dropdown-toggle");
+							if (parentToggle)
+								parentToggle.classList.add("active");
+						}
+					});
+			});
+		</script>
 
-  {% include "accounting/includes/navbar.html" %}
+		{% include "accounting/includes/navbar.html" %}
 
-  <div class="content container">
-    {% block content %}{% endblock %}
-  </div>
+		<div class="content container">{% block content %}{% endblock %}</div>
 
-  {% bootstrap_javascript %}
-</body>
+		{% bootstrap_javascript %}
+	</body>
 </html>
