@@ -5,7 +5,7 @@ class Company(models.Model):
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -29,7 +29,7 @@ class Account(models.Model):
     parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.SET_NULL)
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.number} - {self.name}"
@@ -41,7 +41,7 @@ class Transaction(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     reference = models.CharField(max_length=50, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.date} - {self.memo}"

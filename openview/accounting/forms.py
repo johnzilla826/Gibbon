@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 
 
-class CreateCompanyForm(forms.ModelForm):
+class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ["name", "location"]
@@ -12,7 +12,7 @@ class CreateCompanyForm(forms.ModelForm):
         }
 
 
-class CreateAccountForm(forms.ModelForm):
+class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = [

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.views.generic import CreateView
 
 from .models import *
-from .forms import CreateCompanyForm, CreateAccountForm
+from .forms import CompanyForm, AccountForm
 
 
 def index(request):
@@ -16,14 +16,14 @@ def trial_balance(request):
 
 class CompanyCreateView(CreateView):
     model = Company
-    form_class = CreateCompanyForm
+    form_class = CompanyForm
     template_name = "accounting/create_view/create_company.html"
     success_url = "/accounting/"
 
 
 class AccountCreateView(CreateView):
     model = Account
-    form_class = CreateAccountForm
+    form_class = AccountForm
     template_name = "accounting/create_view/create_account.html"
     success_url = "/accounting/"
 
